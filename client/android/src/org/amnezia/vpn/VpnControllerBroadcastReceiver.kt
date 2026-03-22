@@ -14,13 +14,13 @@ class VpnControllerBroadcastReceiver : BroadcastReceiver() {
         GlobalScope.launch {
             val proto = VpnStateStore.getVpnState().vpnProto ?: return@launch
             Intent(context, proto.serviceClass).also {
-                try {
-                    context.startService(it)
-                } catch (_: Throwable) {
-                    return@launch
-                }
                 val localBroadcastIntent = when (intent.action) {
                     "org.amnezia.vpn.action.START_VPN" -> {
+                        try {
+                            context.startService(it)
+                        } catch (_: Throwable) {
+                            return@launch
+                        }
                         Intent(ACTION_CONNECT).apply {
                             setPackage(context.packageName)
                         }
