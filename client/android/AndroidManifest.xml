@@ -28,6 +28,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
 
+    <permission
+        android:name="org.amnezia.vpn.permission.VPN_CONTROLLER"
+        android:protectionLevel="signature" />
+
     <application
         android:name=".AmneziaApplication"
         android:label="-- %%INSERT_APP_NAME%% --"
@@ -214,5 +218,14 @@
             android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/qtprovider_paths" />
         </provider>
+
+        <receiver android:name=".VpnControllerBroadcastReceiver"
+            android:exported="true"
+            android:permission="org.amnezia.vpn.permission.VPN_CONTROLLER">
+            <intent-filter>
+                <action android:name="org.amnezia.vpn.action.START_VPN" />
+                <action android:name="org.amnezia.vpn.action.STOP_VPN" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

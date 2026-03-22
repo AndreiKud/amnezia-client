@@ -67,7 +67,7 @@ android {
             packaging {
                 resources.excludes += "DebugProbesKt.bin"
             }
-            signingConfig = signingConfigs["release"]
+            signingConfig = signingConfigs["debug"]
         }
 
         create("fdroid") {
