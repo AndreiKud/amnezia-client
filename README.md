@@ -1,3 +1,7 @@
+# Fork
+
+This fork adds a broadcast receiver that lets an external app start and stop the VPN service. It requires a signature-level permission, so both Amnezia and the controller app must be built with the same certificate.
+
 # Amnezia VPN
 
 ### _The best client for self-hosted VPN_
